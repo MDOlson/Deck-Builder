@@ -1,0 +1,49 @@
+#location{
+    display: inline-block;
+    background-color: violet;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-left: 300px;
+    border-radius: 10px;
+}
+
+#pick_materials{
+    display: inline-block;
+    background-color: lightcoral;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+#dimensions{
+    display: inline-block;
+    background-color: goldenrod;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+#hardware{
+    display: inline-block;
+    background-color: burlywood;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+.map{
+    height: 500px;
+    width: 1189px;
+    text-align: center;   
+    border-radius: 10px; 
+    background-color: turquoise;
+    margin-left: 300px;
+}
+
+#button{
+    margin-left: 300px;
+}

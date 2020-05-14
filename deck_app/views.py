@@ -5,18 +5,6 @@ from django.contrib import messages
 def index(request):
     return render(request, "index.html")
 
-def welcome(request):
-    return redirect('/')
-
-def m_list(request):
-    return redirect('/')
-
-def d_list(request):
-    return redirect('/')
-
-def hardware(request):
-    return redirect('/')
-
 # Logging in and registering
 def register(request):
     if request.POST['pw'] != request.POST['confpw']:
@@ -32,7 +20,7 @@ def register(request):
         new_user = User.objects.create(first_name=request.POST['fname'], last_name=request.POST['lname'], email=request.POST['email'], password=request.POST['pw'])
         request.session["user"] = new_user.first_name
         request.session["id"] = new_user.id
-    return redirect("/success")
+    return redirect("/welcome")
 
 def login(request):
     print(request.POST)
@@ -42,10 +30,21 @@ def login(request):
         if logged_user.password == request.POST['pw']:
             request.session["user"] = logged_user.first_name
             request.session["id"] = logged_user.id
-            return redirect("/success")
+            return redirect("/welcome")
     return redirect("/")
 
 def logout(request):
     request.session.clear()
     print(request.session)
     return redirect("/")   
+
+def welcome(request):
+    return render(request, 'welcome.html')
+
+def pick_mat(request):
+
+    return render(request, 'pick_materials.html')
+
+def results(request):
+    formdata = User.objects.all()
+    return render(request, "results.html")
