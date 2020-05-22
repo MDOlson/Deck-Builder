@@ -42,9 +42,55 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 def pick_mat(request):
-
+    
     return render(request, 'pick_materials.html')
 
 def results(request):
     formdata = User.objects.all()
     return render(request, "results.html")
+
+def process(request):
+    print(request.POST)
+    pricing = {
+        'cedar': 2.49,
+        'trex': 2.17,
+    }
+    type_of_wood = request.POST['type']
+    
+    width = request.POST['type'][2]
+    print(width, "this is the width")
+    # figure out area of deck
+    area = int(request.POST['length'][0]) * int(request.POST['width'][0])
+    print(area, "this is the Area")
+
+
+# I Need To Get This Calculation Working Properly, It is Not at the current moment!
+
+
+    # how many boards to cover length of deck
+    boards_for_length = int(request.POST['length'][0])*int(type_of_wood[4])
+    print(boards_for_length, "here is the Number Of Boards")
+    # how many boards to cover width of deck
+    boards_for_width = int(request.POST['width'][0])*int(type_of_wood[2])
+    print(boards_for_width, "Here are the Boards For Width")
+   
+    
+    # end of Problem
+
+
+    # spacing between boards
+    total_spacing = boards_for_width * float(request.POST['spacing'])
+    print(total_spacing, "here is the total Spacing")
+    # final board count
+    true_area = area - total_spacing
+    print(true_area, "here is the True Area")
+    total_boards = boards_for_length * boards_for_width
+    print(total_boards, "Here are the Total Boards")
+
+    # final pricing
+    
+    final_price = total_boards*pricing[request.POST['wood_type']]
+    context = {
+        "final_price": final_price
+    }
+    return render(request, "results.html", context)

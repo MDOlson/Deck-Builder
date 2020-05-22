@@ -5,160 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        #map {
+          height: 100%;
+          width: 100%;
+          border-radius: 10px;
+          margin-top: 5px;
+        }
+      </style>
     <title>Document</title>
 </head>
 <body>
     <p id="button"><a href="/logout">Logout</a></p>
-    <form action="submit" id="location" method=POST>
-        {% csrf_token %}
-    <h1>Project Location</h1>
-        <p >Address Zip: <input type="text" placeholder="Type an address"></p>
-        <p>Project Name: <input type="text" placeholder="Name your project"></p>
-        <p>Locations: <input list="providers">
-            <datalist id="providers">
-                <option value="Home Depot"></option>
-                <option value="Lowes"></option>
-                <option value="Dunn Lumber"></option>
-                <option value="BMC"></option>
-            </datalist>
-        </p>
-        <input type="submit" value="Results">
-    </form>
-    <form action="submit" id="dimensions" method=POST>
-        {% csrf_token %}
-        <h1>Dimensions</h1>
-        <p>Deck Heigt: <input list="height">
-            <datalist id="height">
-                <option value="Empty"></option>
-                <option value="2ft"></option>
-                <option value="3ft"></option>
-                <option value="4ft"></option>
-                <option value="6ft"></option>
-                <option value="8ft"></option>
-                <option value="10ft"></option>
-                <option value="12ft"></option>
-                <option value="16ft"></option>
-            </datalist>
-        </p>
-        <p>Deck Length: 
-            <input list="length">
-            <datalist id="length">
-                <option value="Empty"></option>
-                <option value="4ft"></option>
-                <option value="6ft"></option>
-                <option value="8ft"></option>
-                <option value="10ft"></option>
-                <option value="12ft"></option>
-                <option value="16ft"></option>
-            </datalist>
-        </p>
-        <p>Deck Width: 
-            <input list="width">
-            <datalist id="width">
-                <option value="Empty"></option>
-                <option value="4ft"></option>
-                <option value="6ft"></option>
-                <option value="8ft"></option>
-                <option value="10ft"></option>
-                <option value="12ft"></option>
-                <option value="16ft"></option>
-            </datalist>
-        </p>
-        <input type="submit" value="Results">
-    </form>
-    <form action="submit" id="pick_materials" method=POST>
-        {% csrf_token %}
-        <h1>Pick Your Materials</h1>
-        <p>Decking: <input list="decking">
-            <datalist id="decking">
-                <option value="Empty"></option>
-                <option value="2x4x8 cedar"></option>
-                <option value="2x4x10 cedar"></option>
-                <option value="2x4x12 cedar"></option>
-                <option value="2x4x16 cedar"></option>
-                <option value="2x6x8 cedar"></option>
-                <option value="2x6x10 cedar"></option>
-                <option value="2x6x12 cedar"></option>
-                <option value="2x6x16 cedar"></option>
-                <option value="5/4x4x8 cedar"></option>
-                <option value="5/4x4x10 cedar"></option>
-                <option value="5/4x4x12 cedar"></option>
-                <option value="5/4x4x16 cedar"></option>
-                <option value="5/4x6x8 cedar"></option>
-                <option value="5/4x6x10 cedar"></option>
-                <option value="5/4x6x12 cedar"></option>
-                <option value="5/4x6x16 cedar"></option>
-                <option value="5/4x4x10 trex"></option>
-                <option value="5/4x4x16 trex"></option>
-                <option value="5/4x6x10 trex"></option>
-                <option value="5/4x6x16 trex"></option>
-            </datalist>
-        </p>
-        <p>Spacing: <input list="spacing">
-            <datalist id="spacing">
-                <option value="1/4"></option>
-                <option value="1/8"></option>
-                <option value="3/8"></option>
-            </datalist>
-        </p>
-        <p>flashing: <input list="flashing">
-            <datalist id="flashing">
-                <option value="1 5/4"></option>
-                <option value="2 1/8"></option>
-                <option value="2 3/8"></option>
-            </datalist>
-        </p>
-        <input type="submit" value="Results">
-    </form>
-        <!-- <p>Board Length: <input list="spacing">
-            <datalist id="spacing">
-                <option value="1/4"></option>
-                <option value="1/8"></option>
-                <option value="3/8"></option>
-            </datalist></p>
-        <p>Board Width: <input type="text"></p> -->
+    <div id="forms">
+        <form action="submit" id="location" method=POST>
+            {% csrf_token %}
+        <h1>Project Location</h1>
+            <p >Address Zip: <input type="text" name="address" placeholder="Type an address"></p>
+            <p>Project Name: <input type="text" name="project_name" placeholder="Name your project"></p>
+            <p>Locations:
+                <select name="providers" id="providers">
+                    <option name="type" value="Empty"></option>
+                    <option value="Home Depot">Home Depot</option>
+                    <option value="Lowes">Lowes</option>
+                    <option value="Dunn Lumber">Dunn Lumber</option>
+                    <option value="BMC">BMC</option>
+                </select>
+            </p>
+            <input type="submit" value="Results">
+        </form>
 
-    
-    <form action="submit" id="hardware" method=POST>    
-    {% csrf_token %}
-    <h1>Hardware</h1>
-        <p>Hangers & Nails: 
-            <input list="hanger_n_nails">
-            <datalist id="hanger_n_nails">
-                <option value="Simpson 2x6 nailing hanger"></option>
-                <option value="Simpson 2x8 nailing hanger"></option>
-                <option value="Simpson 2x12 nailing hanger"></option>
-            </datalist>
-        </p>
-        <p>Compo Screws: 
-            <input list="composite_screws">
-            <datalist id="composite_screws">
-                <option value="1 1/4 inch brown"></option>
-                <option value="1 1/8 inch brown"></option>
-                <option value="1 3/8 inch brown"></option>
-                <option value="2 inch brown"></option>
-                <option value="1 1/4 inch cedar color"></option>
-                <option value="1 1/8 inch cedar color"></option>
-                <option value="1 3/8 inch cedar color"></option>
-                <option value="2 inch cedar color"></option>
-                <option value="1 1/4 inch purple"></option>
-                <option value="1 1/8 inch purple"></option>
-                <option value="1 3/8 inch purple"></option>
-                <option value="2 inch purple"></option>
-            </datalist>
-        </p>
-        <p>Lagging Bolts: 
-            <input list="lag_bolts">
-            <datalist id="lag_bolts">
-                <option value="6 inch x 5/8 galvanized steel"></option>
-                <option value="8 inch x 5/8 galvanized steel"></option>
-                <option value="10 inch x 3/4 galvanized steel"></option>
-            </datalist>
-        </p>
-        <input type="submit" value="Results">
-    </form>
-    <div class="map">
-        <h1>Geolocation goes here</h1>
-    </div>
+        <form action="/process" id="form2" method=POST>
+            {% csrf_token %}
+            <!-- <input name="test" type="text"> -->
+            <div id="dimensions">
+                <h1>Dimensions</h1>
+                <p>Deck Height: 
+                    <select name="height" id="height">
+                        
+                        <option  value="Empty"></option>
+                        <option  value="2ft">2ft</option>
+                        <option  value="3ft">3ft</option>
+                        <option  value="4ft">4ft</option>
+                        <option  value="6ft">6ft</option>
+                        <option  value="8ft">8ft</option>
+                        <option  value="10ft">10ft</option>
+                        <option  value="12ft">12ft</option>
+                        <option  value="16ft">16ft</option>
+                    </select>
+                </p>
+                <p>Deck Length: 
+                    <select name="length"  id="length">
+                        <option  value="Empty"></option>
+                        <option  value="4ft">4ft</option>
+                        <option  value="6ft">6ft</option>
+                        <option  value="8ft">8ft</option>
+                        <option  value="10ft">10ft</option>
+                        <option  value="12ft">12ft</option>
+                        <option  value="16ft">16ft</option>
+                    </select>
+                </p>
+                <p>Deck Width:               
+                    <select name="width" id="width">
+                        <option  value="Empty"></option>
+                        <option  value="4ft">4ft</option>
+                        <option  value="6ft">6ft</option>
+                        <option  value="8ft">8ft</option>
+                        <option  value="10ft">10ft</option>
+                        <option  value="12ft">12ft</option>
+                        <option  value="16ft">16ft</option>
+                    </select>
+                    
+                </p>
+            </div>    
+            <div id="pick_materials">
+                <h1>Pick Your Materials</h1>
+                <p>Decking:
+                    <select name="wood_type">
+                        <option name="type" value="Empty"></option>
+                        <option value="cedar">Cedar</option>
+                        <option value="trex">Trex</option>
+                    </select>
+                    <select name="type" id="decking">
+                        <option name="type" value="Empty"></option>
+                        <option value="2x4x8">Cedar, 2x4x8</option>
+                        <option value="2x4x10">Cedar, 2x4x10</option>
+                        <option value="2x4x12">Cedar, 2x4x12</option>
+                        <option value="2x4x16">Cedar, 2x4x16</option>
+                        <option value="2x6x8">Cedar, 2x6x8</option>
+                        <option value="2x6x10">Cedar, 2x6x10</option>
+                        <option value="2x6x12">Cedar, 2x6x12</option>
+                        <option value="2x6x16">Cedar, 2x6x16</option>
+                        <option value="5/4x4x8">Cedar, 5/4x4x8</option>
+                        <option value="5/4x4x10">Cedar, 5/4x4x10</option>
+                        <option value="5/4x4x12">Cedar, 5/4x4x12</option>
+                        <option value="5/4x4x16">Cedar, 5/4x4x16</option>
+                        <option value="5/4x6x8">Cedar, 5/4x6x8</option>
+                        <option value="5/4x6x10">Cedar, 5/4x6x10</option>
+                        <option value="5/4x6x12">Cedar, 5/4x6x12</option>
+                        <option value="5/4x6x16">Cedar, 5/4x6x16</option>
+                        <option value="5/4x4x10">Trex, 5/4x4x10</option>
+                        <option value="5/4x4x16">Trex, 5/4x4x16</option>
+                        <option value="5/4x6x10">Trex, 5/4x6x10</option>
+                        <option value="5/4x6x16">Trex, 5/4x6x16</option>
+                    </select>
+                </p>
+                <p>Spacing: 
+                    <select name="spacing" id="spacing">
+                        <option name="type" value="Empty"></option>
+                        <option  value=".25">1/4</option>
+                        <option  value=".125">1/8</option>
+                        <option  value=".375">3/8</option>
+                    </select>
+                </p>
+                <p>Flashing: 
+                    <select name="flashing" id="flashing">
+                        <option name="type" value="Empty"></option>
+                        <option  value="1 5/4">1 5/4</option>
+                        <option  value="2 1/8">2 1/8</option>
+                        <option  value="2 3/8">2 3/8</option>
+                    </select>
+                </p>
+            </div>    
+            <div id="hardware">
+                <h1>Hardware</h1>
+                <p>Hangers & Nails: 
+                    <select name="hanger_n_nails" id="hanger_n_nails">
+                        <option name="type" value="Empty"></option>
+                        <option  value="Simpson 2x6 nailing hanger">2x6</option>
+                        <option  value="Simpson 2x8 nailing hanger">2x8</option>
+                        <option  value="Simpson 2x12 nailing hanger">2x12</option>
+                    </select>
+                </p>
+                <p>Compo Screws: 
+                    <select name="composite_screws" id="composite_screws">
+                        <option name="type" value="Empty"></option>
+                        <option  value="1 1/4 inch brown">1 1/4 inch brown</option>
+                        <option  value="1 1/8 inch brown">1 1/8 inch brown</option>
+                        <option  value="1 3/8 inch brown">1 3/8 inch brown</option>
+                        <option  value="2 inch brown">2 inch brown</option>
+                        <option  value="1 1/4 inch cedar color">1 1/4 inch cedar color</option>
+                        <option  value="1 1/8 inch cedar color">1 1/8 inch cedar color</option>
+                        <option  value="1 3/8 inch cedar color">1 3/8 inch cedar color</option>
+                        <option  value="2 inch cedar color"></option>
+                        <option  value="1 1/4 inch purple"></option>
+                        <option  value="1 1/8 inch purple"></option>
+                        <option  value="1 3/8 inch purple"></option>
+                        <option  value="2 inch purple"></option>
+                    </select>
+                </p>
+                <p>Lagging Bolts: 
+                    
+                    <select  name="lag_bolts" id="lag_bolts">
+                        <option name="type" value="Empty"></option>
+                        <option  value="6 inch x 5/8 galvanized steel">6 inch x 5/8</option>
+                        <option  value="8 inch x 5/8 galvanized steel">8 inch x 5/8</option>
+                        <option  value="10 inch x 3/4 galvanized steel">10 inch x 3/4</option>
+                    </select>
+                </p>
+                <p></p>
+            </div>
+            <input type="submit" id="results-button" value="Results">
+        </form>
+        <div class="map">
+            <div id="map"></div>
+            <script>
+                // Initialize and add the map
+                function initMap() {
+                // The location of Uluru
+                var uluru = {lat: -25.344, lng: 131.036};
+                // The map, centered at Uluru
+                var map = new google.maps.Map(
+                    document.getElementById('map'), {zoom: 4, center: uluru});
+                // The marker, positioned at Uluru
+                var marker = new google.maps.Marker({position: uluru, map: map});
+                }
+            </script>
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtFqe5e_aPQyFWdZefH70Kj0izo9iGEYo&callback=initMap">
+            </script>
+        </div>
+    </div>    
 </body>
 </html>

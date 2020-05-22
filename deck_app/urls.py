@@ -9,4 +9,5 @@ urlpatterns = [
     path("welcome", views.welcome),
     path("pick_mat", views.pick_mat),
     path("submit", views.results),
+    path("process", views.process),
 ]

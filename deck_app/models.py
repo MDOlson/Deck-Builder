@@ -27,4 +27,14 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     objects = UserManager()
-# Create your models here.
+
+# class Deck(models.Model):
+#     height = models.height
+#     length = models.length
+#     width = models.width
+#     decking = models.decking
+#     spacing = models.spacing
+#     flashing = models.flashing
+#     hang_n_nails = models.hang_n_nails
+#     screws = models.screws
+#     lag_bolts = models.lag_bolts

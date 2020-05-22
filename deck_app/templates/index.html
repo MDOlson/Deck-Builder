@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Login and Registration</title>
 </head>
 <body>
@@ -11,6 +13,10 @@
             {% for message in messages %}
                 <p>{{message}}</p><br>
             {% endfor %}
+        </div>
+        <div id="intro-tag">
+            <h1>Welcome to Deck Builder!</h1>
+            <h2>Please register if you are not a member,<br> or if you are a member just login!</h2>
         </div>
         <div class='form-box'>
             <h1>Register</h1>
@@ -21,16 +27,16 @@
                 <p>Email:<input type="text" name="email"></p>
                 <p>Password:<input type="password" name="pw"></p>
                 <p>Confirm PW:<input type="password" name="confpw"></p>
-                <p id="button"><input type="submit" value="Create User"></p>
+                <p id="form-box-button"><input type="submit" value="Create User"></p>
             </form>
         </div>    
-        <div class='form-box'>    
+        <div class='form-box2'>    
             <h1>Login</h1>
             <form action="login" method=POST>
                 {% csrf_token %}
                 <p>Email:<input type="text" name="email"></p>
                 <p>Password:<input type="password" name="pw"></p>
-                <p id="button"><input type="submit" value="Login"></p>
+                <p id="form-box-button"><input type="submit" value="Login"></p>
             </form>
         </div>    
     </div>
