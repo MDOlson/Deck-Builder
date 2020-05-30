@@ -94,3 +94,6 @@ def process(request):
         "final_price": final_price
     }
     return render(request, "results.html", context)
+
+def render_home(request):
+        return render(request, "home.html")
