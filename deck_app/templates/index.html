@@ -18,7 +18,10 @@
             <h1>Welcome to Deck Builder!</h1>
             <h2>Please register if you are not a member,<br> or if you are a member just login!</h2>
         </div>
-        <div class='form-box'>
+        <div>
+            <link rel="stylesheet" href="">
+        </div>
+        <!-- <div class='form-box'>
             <h1>Register</h1>
             <form action="register" method=POST>
                 {% csrf_token %}
@@ -29,7 +32,7 @@
                 <p>Confirm PW:<input type="password" name="confpw"></p>
                 <p id="form-box-button"><input type="submit" value="Create User"></p>
             </form>
-        </div>    
+        </div>     -->
         <div class='form-box2'>    
             <h1>Login</h1>
             <form action="login" method=POST>
@@ -38,6 +41,7 @@
                 <p>Password:<input type="password" name="pw"></p>
                 <p id="form-box-button"><input type="submit" value="Login"></p>
             </form>
+            <a href="/new_register">Register Here!</a>
         </div>    
     </div>
 </body>
