@@ -10,4 +10,5 @@ urlpatterns = [
     path("pick_mat", views.pick_mat),
     path("submit", views.results),
     path("process", views.process),
+    path("locate", views.location),
 ]

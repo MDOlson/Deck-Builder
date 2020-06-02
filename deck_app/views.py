@@ -41,11 +41,16 @@ def logout(request):
 def welcome(request):
     return render(request, 'welcome.html')
 
+def location(request):
+    request.session['address'] = request.POST['address']
+    return redirect("/pick_mat")
+
 def pick_mat(request):
     
     return render(request, 'pick_materials.html')
 
 def results(request):
+    request.session["address"] = request.POST["address"]
     formdata = User.objects.all()
     return render(request, "results.html")
 

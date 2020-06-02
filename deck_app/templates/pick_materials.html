@@ -18,7 +18,7 @@
 <body>
     <p id="button"><a href="/logout">Logout</a></p>
     <div id="forms">
-        <form action="submit" id="location" method=POST>
+        <form action="/locate" id="location" method=POST>
             {% csrf_token %}
         <h1>Project Location</h1>
             <p >Address Zip: <input type="text" name="address" placeholder="Type an address"></p>
@@ -170,16 +170,41 @@
         <div class="map">
             <div id="map"></div>
             <script>
-                // Initialize and add the map
-                function initMap() {
-                // The location of Uluru
-                var uluru = {lat: -25.344, lng: 131.036};
-                // The map, centered at Uluru
-                var map = new google.maps.Map(
-                    document.getElementById('map'), {zoom: 4, center: uluru});
-                // The marker, positioned at Uluru
-                var marker = new google.maps.Marker({position: uluru, map: map});
+                var map;
+                function initMap(){
+                    var location = {lat: -25.344, lng: 131.036};
+                    var geocoder = new google.maps.Geocoder();
+                    var user_address = "{{request.session.address}}";
+                    geocoder.geocode({address: user_address}, function (results, status){
+                    if(status == 'OK'){
+                        console.log(results, "this is my result");
+                        var latLng = results[0].geometry.location;
+                        console.log(latLng, "these are my lat/lng");
+                        map = new google.maps.Map(document.getElementById('map'), {
+                        center: latLng,
+                        zoom: 8
+                        });
+                        var marker = new google.maps.Marker({position: latLng, map: map});
+                    } else {
+                        alert("Error: " + status);
+                        }
+                    })
+                    map = new google.maps.Map(document.getElementById('map'), {
+                    center: location,
+                    zoom: 8
+                    });
+                    
                 }
+                // // Initialize and add the map
+                // function initMap() {
+                // // The location of Uluru
+                // var uluru = {lat: -25.344, lng: 131.036};
+                // // The map, centered at Uluru
+                // var map = new google.maps.Map(
+                //     document.getElementById('map'), {zoom: 4, center: uluru});
+                // // The marker, positioned at Uluru
+                // var marker = new google.maps.Marker({position: uluru, map: map});
+                // }
             </script>
             <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtFqe5e_aPQyFWdZefH70Kj0izo9iGEYo&callback=initMap">
