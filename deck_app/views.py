@@ -22,6 +22,9 @@ def register(request):
         request.session["id"] = new_user.id
     return redirect("/welcome")
 
+def new_register(request):
+    return render(request, 'register.html')
+
 def login(request):
     print(request.POST)
     logged_user = User.objects.filter(email=request.POST["email"])
