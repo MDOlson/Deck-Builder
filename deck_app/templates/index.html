@@ -22,30 +22,17 @@
                     <h2>Welcome to</h2>
                     <h1 class="text-center text-warning display-2">Deck Builder</h1>
                 </div>
-                <!-- <div class='form-box'>
-                    <h1>Register</h1>
-                    <form action="register" method=POST>
-                        {% csrf_token %}
-                        <p>First Name:<input type="text" name="fname"></p>
-                        <p>Last Name:<input type="text" name="lname"></p>
-                        <p>Email:<input type="text" name="email"></p>
-                        <p>Password:<input type="password" name="pw"></p>
-                        <p>Confirm PW:<input type="password" name="confpw"></p>
-                        <p id="form-box-button"><input type="submit" value="Create User"></p>
-                    </form>
-                </div>     -->
             </div>
-
-                <div class="col">
-                    <h1>Login</h1>
-                    <form action="login" method=POST>
-                        {% csrf_token %}
-                        <p><input type="text" name="email" placeholder="Email Address"></p>
-                        <p><input type="password" name="pw" placeholder="Password"></p>
-                        <p id="form-box-button"><input type="submit" value="Login"></p>
-                    </form>
-                    <a class="text-warning" href="/new_register">Register Here!</a>
-                </div>
+            <div class="col">
+                <h1>Login</h1>
+                <form action="login" method=POST>
+                    {% csrf_token %}
+                    <p><input type="text" name="email" placeholder="Email Address"></p>
+                    <p><input type="password" name="pw" placeholder="Password"></p>
+                    <p id="form-box-button"><input type="submit" value="Login"></p>
+                </form>
+                <a class="text-warning" href="/new_register">Register Here!</a>
+            </div>
         </div>
     </div>
     </div>
