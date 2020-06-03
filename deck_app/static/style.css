@@ -1,4 +1,4 @@
-#intro-tag{
+/* #intro-tag{
     text-align: center;
     background-color: cadetblue;
 }
@@ -81,7 +81,7 @@
     margin-left: 300px;
 } */
 
-#pick_materials{ 
+/* #pick_materials{ 
     display: inline-block;
     height: 210px;
     background-color: lightcoral;
@@ -89,9 +89,9 @@
     padding-left: 10px;
     padding-bottom: 10px;
     border-radius: 10px;
-} 
+}  */
 
-#dimensions{
+/* #dimensions{
     display: inline-block;
     vertical-align: top;
     height: 210px;
@@ -112,9 +112,9 @@
     padding-left: 10px;
     padding-bottom: 10px;
     border-radius: 10px;
-}
+} */
 
-#results-button{
+/* #results-button{
     width: 100px;
     height: 50px;
     color: whitesmoke;
@@ -128,9 +128,9 @@
     border-radius: 10px; 
     background-color: turquoise;
     margin-left: 300px;
-}
+} */
 
-#button{
+/* #button{
     margin-left: 300px;
 }
 
@@ -141,4 +141,4 @@
     
     background-color: grey;
 }
-
+*/
