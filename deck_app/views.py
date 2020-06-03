@@ -25,6 +25,9 @@ def register(request):
 def new_register(request):
     return render(request, 'register.html')
 
+def have_account(request):
+    return render(request, 'index.html')
+
 def login(request):
     print(request.POST)
     logged_user = User.objects.filter(email=request.POST["email"])

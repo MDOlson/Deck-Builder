@@ -6,7 +6,7 @@
     {% load static %}
     <!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>Login and Registration</title>
+    <title>Deck Builder Login</title>
 </head>
 <body>
     <div class="bg-secondary p-4">
@@ -19,7 +19,8 @@
                     {% endfor %}
                 </div>
                 <div id="intro-tag">
-                    <h1>Welcome to Deck Builder!</h1>
+                    <h2>Welcome to</h2>
+                    <h1 class="text-center text-warning display-2">Deck Builder</h1>
                 </div>
                 <!-- <div class='form-box'>
                     <h1>Register</h1>
@@ -39,8 +40,8 @@
                     <h1>Login</h1>
                     <form action="login" method=POST>
                         {% csrf_token %}
-                        <p>Email:<br><input type="text" name="email"></p>
-                        <p>Password:<br><input type="password" name="pw"></p>
+                        <p><input type="text" name="email" placeholder="Email Address"></p>
+                        <p><input type="password" name="pw" placeholder="Password"></p>
                         <p id="form-box-button"><input type="submit" value="Login"></p>
                     </form>
                     <a class="text-warning" href="/new_register">Register Here!</a>
