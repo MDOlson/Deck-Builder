@@ -13,4 +13,5 @@ urlpatterns = [
     path("submit", views.results),
     path("process", views.process),
     path("locate", views.location),
+    path("render_home", views.render_home),
 ]

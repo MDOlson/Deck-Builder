@@ -47,6 +47,9 @@ def logout(request):
 def welcome(request):
     return render(request, 'welcome.html')
 
+def render_home(request):
+    return render(request, "home.html")
+
 def pick_mat(request):
     
     return render(request, 'pick_materials.html')
