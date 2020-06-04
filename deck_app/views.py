@@ -51,6 +51,10 @@ def pick_mat(request):
     
     return render(request, 'pick_materials.html')
 
+def location(request):
+    request.session['address'] = request.POST['address']
+    return redirect('/pick_mat')
+
 def results(request):
     formdata = User.objects.all()
     return render(request, "results.html")
