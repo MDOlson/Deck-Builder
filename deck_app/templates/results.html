@@ -6,13 +6,25 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Final Price</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
-    <div id="final_price">
-        <h1>Thank You For Using Deck Builder<br> To Simplify Your Project!</h1>
-        <h1>Your Price for Boards is (${{ final_price }})</h1>
+    <div class="bg-secondary p-4">
+        <a href="/logout" class="pick-mat"><button class="pick-mat">Logout</button></a></h3>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-left text-warning display-2">Deck Builder</h1>
+                </div>
+                <div class="col">
+                    <h3 class="text-right">Thank you for choosing <span class="text-warning font-weight-light"> Deck Builder </span> to simplify your project!</h3>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto text-center border border-warning rounded p-2 bg-warning shadow text-dark m-3" style="width: 400px;">
+            <h1>Total Cost for Boards</h1>
+            <h1 class="text-white display-3">${{ final_price }}</h1>
+        </div>
     </div>
-    <a href="logout">Logout</a>
-        
 </body>
 </html>

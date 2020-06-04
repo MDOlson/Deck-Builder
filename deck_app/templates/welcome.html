@@ -5,14 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Deck Builder</title>
 </head>
 <body>
-    <div id="welcome-div">
-        <h1 id="welcome">Welcome To Deck Builder!</h1>
-        <h3 id="p1">This is where your tutorial begins! <br> Please proceed to the "Pick Materials" link<br> and you will be able to set your project address, <br>give it a name, and pick your closest 4 suppliers. <br> Then you can proceed to pick out your materials by dimensions,<br> type, and hardware to be calculated specifically for your project!<br>
-        <a href="/pick_mat" class="pick-mat"><button class="pick-mat">Pick Materials</button></a>
+    <div class="bg-secondary p-4">
         <a href="/logout" class="pick-mat"><button class="pick-mat">Logout</button></a></h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div id="welcome-div">
+                            <h2>Welcome to</h2>
+                            <h1 id="welcome" class="text-center text-warning display-2">Deck Builder</h1>
+                            <h3 id="p1" class="text-right">This is where your tutorial begins!</h3>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p>Please proceed to the "Pick Materials" link and you will be able to set your project address, give it a name, and pick your closest 4 suppliers. Then you can proceed to pick out your materials by dimensions, type, and hardware to be calculated specifically for your project!</p>
+                        <a href="/pick_mat" class="pick-mat"><button class="pick-mat">Pick Materials</button></a>
+                        <a href="/render_home"><button>Inspirations</button></a>
+                    </div>
+                </div>
+            </div>        
     </div>
 </body>
 </html>

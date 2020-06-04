@@ -3,7 +3,7 @@
     margin: 0;
 }
 #wrapper {
-    background-color: darkgrey;
+    background-color: #6c757d;
     height: 1100px;
     width: 1200px;
     margin: 0px auto; 
@@ -14,9 +14,9 @@
     height: 150px;
     margin: 10px;
 }
-h1{color: darkcyan;}
+h1{color: goldenrod;}
 h2{
-    color: darkcyan;
+    color: goldenrod;
     font-weight: bold;
 }
 #mainfooter{
