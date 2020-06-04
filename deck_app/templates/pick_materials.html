@@ -5,82 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
-        #map {
-          height: 100%;
-          width: 100%;
-          border-radius: 10px;
-          margin-top: 5px;
-        }
-      </style>
+    #map {
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 5px;
+    }
+    </style>
     <title>Document</title>
 </head>
 <body>
-    <p id="button"><a href="/logout">Logout</a></p>
-    <div id="forms">
-        <form action="submit" id="location" method=POST>
-            {% csrf_token %}
-        <h1>Project Location</h1>
-            <p >Address Zip: <input type="text" name="address" placeholder="Type an address"></p>
-            <p>Project Name: <input type="text" name="project_name" placeholder="Name your project"></p>
-            <p>Locations:
-                <select name="providers" id="providers">
-                    <option name="type" value="Empty"></option>
-                    <option value="Home Depot">Home Depot</option>
-                    <option value="Lowes">Lowes</option>
-                    <option value="Dunn Lumber">Dunn Lumber</option>
-                    <option value="BMC">BMC</option>
-                </select>
-            </p>
-            <input type="submit" value="Results">
-        </form>
-
-        <form action="/process" id="form2" method=POST>
-            {% csrf_token %}
-            <!-- <input name="test" type="text"> -->
-            <div id="dimensions">
-                <h1>Dimensions</h1>
-                <p>Deck Height: 
-                    <select name="height" id="height">
+    <div class="bg-secondary p-4">
+    <a href="/logout" class="pick-mat"><button class="pick-mat">Logout</button></a></h3>
+    <h1 id="welcome" class="text-left ml-4 text-warning display-2">Deck Builder</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col border border-warning rounded p-3 mr-2 shadow rounded bg-warning text-dark">
+                <form action="submit" id="location" method=POST>
+                    {% csrf_token %}
+                <h1>Location</h1>
+                    <p><input type="text" name="address" placeholder="Enter Zip Code"></p>
+                    <p><input type="text" name="project_name" placeholder="Project Name"></p>
+                    <p>Retailer:<br>
+                        <select name="providers" id="providers">
+                            <option name="type" value="Empty"></option>
+                            <option value="Home Depot">Home Depot</option>
+                            <option value="Lowes">Lowes</option>
+                            <option value="Dunn Lumber">Dunn Lumber</option>
+                            <option value="BMC">BMC</option>
+                        </select>
+                    </p>
+                    <input type="submit" value="Results">
+                </form>
+            </div>
+        <div class="col border border-warning rounded p-3 mr-2 shadow rounded bg-dark text-white">
+            <form action="/process" id="form2" method=POST>
+                {% csrf_token %}
+                <div id="dimensions">
+                    <h1>Dimensions</h1>
+                    <p>Deck Height:<br>
+                        <select name="height" id="height">
+                            <option  value="Empty"></option>
+                            <option  value="2ft">2ft</option>
+                            <option  value="3ft">3ft</option>
+                            <option  value="4ft">4ft</option>
+                            <option  value="6ft">6ft</option>
+                            <option  value="8ft">8ft</option>
+                            <option  value="10ft">10ft</option>
+                            <option  value="12ft">12ft</option>
+                            <option  value="16ft">16ft</option>
+                        </select>
+                    </p>
+                    <p>Deck Length:<br>
+                        <select name="length"  id="length">
+                            <option  value="Empty"></option>
+                            <option  value="4ft">4ft</option>
+                            <option  value="6ft">6ft</option>
+                            <option  value="8ft">8ft</option>
+                            <option  value="10ft">10ft</option>
+                            <option  value="12ft">12ft</option>
+                            <option  value="16ft">16ft</option>
+                        </select>
+                    </p>
+                    <p>Deck Width:<br>          
+                        <select name="width" id="width">
+                            <option  value="Empty"></option>
+                            <option  value="4ft">4ft</option>
+                            <option  value="6ft">6ft</option>
+                            <option  value="8ft">8ft</option>
+                            <option  value="10ft">10ft</option>
+                            <option  value="12ft">12ft</option>
+                            <option  value="16ft">16ft</option>
+                        </select>
                         
-                        <option  value="Empty"></option>
-                        <option  value="2ft">2ft</option>
-                        <option  value="3ft">3ft</option>
-                        <option  value="4ft">4ft</option>
-                        <option  value="6ft">6ft</option>
-                        <option  value="8ft">8ft</option>
-                        <option  value="10ft">10ft</option>
-                        <option  value="12ft">12ft</option>
-                        <option  value="16ft">16ft</option>
-                    </select>
-                </p>
-                <p>Deck Length: 
-                    <select name="length"  id="length">
-                        <option  value="Empty"></option>
-                        <option  value="4ft">4ft</option>
-                        <option  value="6ft">6ft</option>
-                        <option  value="8ft">8ft</option>
-                        <option  value="10ft">10ft</option>
-                        <option  value="12ft">12ft</option>
-                        <option  value="16ft">16ft</option>
-                    </select>
-                </p>
-                <p>Deck Width:               
-                    <select name="width" id="width">
-                        <option  value="Empty"></option>
-                        <option  value="4ft">4ft</option>
-                        <option  value="6ft">6ft</option>
-                        <option  value="8ft">8ft</option>
-                        <option  value="10ft">10ft</option>
-                        <option  value="12ft">12ft</option>
-                        <option  value="16ft">16ft</option>
-                    </select>
-                    
-                </p>
-            </div>    
+                    </p>
+                </div>
+        </div>
+        <div class="col border border-warning rounded p-3 mr-2 shadow rounded bg-dark text-white">
             <div id="pick_materials">
-                <h1>Pick Your Materials</h1>
-                <p>Decking:
+                <h1>Materials</h1>
+                <p>Decking Material and Size:<br>
                     <select name="wood_type">
                         <option name="type" value="Empty"></option>
                         <option value="cedar">Cedar</option>
@@ -110,7 +116,7 @@
                         <option value="5/4x6x16">Trex, 5/4x6x16</option>
                     </select>
                 </p>
-                <p>Spacing: 
+                <p>Spacing:<br>
                     <select name="spacing" id="spacing">
                         <option name="type" value="Empty"></option>
                         <option  value=".25">1/4</option>
@@ -118,7 +124,7 @@
                         <option  value=".375">3/8</option>
                     </select>
                 </p>
-                <p>Flashing: 
+                <p>Flashing:<br>
                     <select name="flashing" id="flashing">
                         <option name="type" value="Empty"></option>
                         <option  value="1 5/4">1 5/4</option>
@@ -126,10 +132,12 @@
                         <option  value="2 3/8">2 3/8</option>
                     </select>
                 </p>
-            </div>    
+            </div>
+        </div>
+        <div class="col border border-warning rounded p-3 shadow rounded bg-dark text-white">
             <div id="hardware">
                 <h1>Hardware</h1>
-                <p>Hangers & Nails: 
+                <p>Hangers & Nails:<br>
                     <select name="hanger_n_nails" id="hanger_n_nails">
                         <option name="type" value="Empty"></option>
                         <option  value="Simpson 2x6 nailing hanger">2x6</option>
@@ -137,7 +145,7 @@
                         <option  value="Simpson 2x12 nailing hanger">2x12</option>
                     </select>
                 </p>
-                <p>Compo Screws: 
+                <p>Compo Screws:<br>
                     <select name="composite_screws" id="composite_screws">
                         <option name="type" value="Empty"></option>
                         <option  value="1 1/4 inch brown">1 1/4 inch brown</option>
@@ -154,8 +162,7 @@
                         <option  value="2 inch purple"></option>
                     </select>
                 </p>
-                <p>Lagging Bolts: 
-                    
+                <p>Lagging Bolts:<br>
                     <select  name="lag_bolts" id="lag_bolts">
                         <option name="type" value="Empty"></option>
                         <option  value="6 inch x 5/8 galvanized steel">6 inch x 5/8</option>
@@ -166,8 +173,9 @@
                 <p></p>
             </div>
             <input type="submit" id="results-button" value="Results">
-        </form>
-        <div class="map">
+        </div>
+            </form>
+        <div class="map shadow rounded">
             <div id="map"></div>
             <script>
                 // Initialize and add the map
@@ -185,6 +193,8 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtFqe5e_aPQyFWdZefH70Kj0izo9iGEYo&callback=initMap">
             </script>
         </div>
-    </div>    
+        </div>
+    </div>
+    </div>
 </body>
 </html>
